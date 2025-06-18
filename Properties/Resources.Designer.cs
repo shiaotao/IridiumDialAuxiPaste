@@ -63,6 +63,16 @@ namespace IridiumDialAuxiPaste.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap Close {
+            get {
+                object obj = ResourceManager.GetObject("Close", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap Settings {
             get {
                 object obj = ResourceManager.GetObject("Settings", resourceCulture);
@@ -76,6 +86,16 @@ namespace IridiumDialAuxiPaste.Properties {
         internal static System.Drawing.Bitmap StatusHelpOutline {
             get {
                 object obj = ResourceManager.GetObject("StatusHelpOutline", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap Wizard {
+            get {
+                object obj = ResourceManager.GetObject("Wizard", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
