@@ -71,29 +71,34 @@ namespace IridiumDialAuxiPaste
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.pasterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.abstractToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.keepOnTopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.alwaysToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.whileTimingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.iridiumNumToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.optionsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.checkProgToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.autoClearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.autoLockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.autoDialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.label21 = new System.Windows.Forms.Label();
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.button11 = new System.Windows.Forms.Button();
-            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.iridiumNumToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
+            this.toolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
+            this.toolStripButtonAD = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonAL = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonAC = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonCP = new System.Windows.Forms.ToolStripButton();
             this.secUpDown = new System.Windows.Forms.NumericUpDown();
-            this.aboutToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.pasterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.keepOnTopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.optionsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.alwaysToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.whileTimingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.abstractToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.cheakProgToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.autoClearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.autoLockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.secUpDown)).BeginInit();
@@ -117,14 +122,14 @@ namespace IridiumDialAuxiPaste
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(117, 27);
-            this.textBox1.TabIndex = 1;
+            this.textBox1.TabIndex = 20;
             // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(280, 36);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(54, 27);
-            this.button1.TabIndex = 2;
+            this.button1.TabIndex = 22;
             this.button1.Text = "PICK";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -147,14 +152,14 @@ namespace IridiumDialAuxiPaste
             this.textBox2.MinimumSize = new System.Drawing.Size(117, 27);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(117, 27);
-            this.textBox2.TabIndex = 1;
+            this.textBox2.TabIndex = 24;
             // 
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(280, 69);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(54, 27);
-            this.button2.TabIndex = 2;
+            this.button2.TabIndex = 26;
             this.button2.Text = "PICK";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -176,14 +181,14 @@ namespace IridiumDialAuxiPaste
             this.textBox3.Name = "textBox3";
             this.textBox3.ReadOnly = true;
             this.textBox3.Size = new System.Drawing.Size(117, 27);
-            this.textBox3.TabIndex = 1;
+            this.textBox3.TabIndex = 28;
             // 
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(280, 102);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(54, 27);
-            this.button3.TabIndex = 2;
+            this.button3.TabIndex = 30;
             this.button3.Text = "PICK";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
@@ -207,7 +212,7 @@ namespace IridiumDialAuxiPaste
             this.textBox4.Name = "textBox4";
             this.textBox4.ReadOnly = true;
             this.textBox4.Size = new System.Drawing.Size(117, 27);
-            this.textBox4.TabIndex = 1;
+            this.textBox4.TabIndex = 32;
             this.textBox4.Text = "123412341234";
             // 
             // button4
@@ -215,7 +220,7 @@ namespace IridiumDialAuxiPaste
             this.button4.Location = new System.Drawing.Point(280, 135);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(54, 27);
-            this.button4.TabIndex = 2;
+            this.button4.TabIndex = 34;
             this.button4.Text = "PICK";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
@@ -237,7 +242,7 @@ namespace IridiumDialAuxiPaste
             this.textBox5.Name = "textBox5";
             this.textBox5.ReadOnly = true;
             this.textBox5.Size = new System.Drawing.Size(117, 27);
-            this.textBox5.TabIndex = 1;
+            this.textBox5.TabIndex = 36;
             this.textBox5.Text = "123412341234";
             // 
             // button5
@@ -245,7 +250,7 @@ namespace IridiumDialAuxiPaste
             this.button5.Location = new System.Drawing.Point(280, 168);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(54, 27);
-            this.button5.TabIndex = 2;
+            this.button5.TabIndex = 38;
             this.button5.Text = "PICK";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
@@ -268,7 +273,7 @@ namespace IridiumDialAuxiPaste
             this.textBox6.MinimumSize = new System.Drawing.Size(117, 27);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(117, 27);
-            this.textBox6.TabIndex = 1;
+            this.textBox6.TabIndex = 40;
             this.textBox6.Text = "123412341234";
             // 
             // button6
@@ -276,7 +281,7 @@ namespace IridiumDialAuxiPaste
             this.button6.Location = new System.Drawing.Point(280, 201);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(54, 27);
-            this.button6.TabIndex = 2;
+            this.button6.TabIndex = 42;
             this.button6.Text = "PICK";
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
@@ -298,7 +303,7 @@ namespace IridiumDialAuxiPaste
             this.textBox7.Name = "textBox7";
             this.textBox7.ReadOnly = true;
             this.textBox7.Size = new System.Drawing.Size(117, 27);
-            this.textBox7.TabIndex = 1;
+            this.textBox7.TabIndex = 44;
             this.textBox7.Text = "123412341234";
             // 
             // button7
@@ -306,7 +311,7 @@ namespace IridiumDialAuxiPaste
             this.button7.Location = new System.Drawing.Point(280, 234);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(54, 27);
-            this.button7.TabIndex = 2;
+            this.button7.TabIndex = 46;
             this.button7.Text = "PICK";
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
@@ -330,7 +335,7 @@ namespace IridiumDialAuxiPaste
             this.textBox8.Name = "textBox8";
             this.textBox8.ReadOnly = true;
             this.textBox8.Size = new System.Drawing.Size(117, 27);
-            this.textBox8.TabIndex = 1;
+            this.textBox8.TabIndex = 48;
             this.textBox8.Text = "123412341234";
             // 
             // button8
@@ -338,7 +343,7 @@ namespace IridiumDialAuxiPaste
             this.button8.Location = new System.Drawing.Point(280, 267);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(54, 27);
-            this.button8.TabIndex = 2;
+            this.button8.TabIndex = 50;
             this.button8.Text = "PICK";
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Click += new System.EventHandler(this.button8_Click);
@@ -360,7 +365,7 @@ namespace IridiumDialAuxiPaste
             this.textBox9.Name = "textBox9";
             this.textBox9.ReadOnly = true;
             this.textBox9.Size = new System.Drawing.Size(117, 27);
-            this.textBox9.TabIndex = 1;
+            this.textBox9.TabIndex = 52;
             this.textBox9.Text = "123412341234";
             // 
             // button9
@@ -368,7 +373,7 @@ namespace IridiumDialAuxiPaste
             this.button9.Location = new System.Drawing.Point(280, 300);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(54, 27);
-            this.button9.TabIndex = 2;
+            this.button9.TabIndex = 54;
             this.button9.Text = "PICK";
             this.button9.UseVisualStyleBackColor = true;
             this.button9.Click += new System.EventHandler(this.button9_Click);
@@ -392,7 +397,7 @@ namespace IridiumDialAuxiPaste
             this.textBox10.Name = "textBox10";
             this.textBox10.ReadOnly = true;
             this.textBox10.Size = new System.Drawing.Size(117, 27);
-            this.textBox10.TabIndex = 1;
+            this.textBox10.TabIndex = 56;
             this.textBox10.Text = "123412341234";
             // 
             // button10
@@ -400,7 +405,7 @@ namespace IridiumDialAuxiPaste
             this.button10.Location = new System.Drawing.Point(280, 333);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(54, 27);
-            this.button10.TabIndex = 2;
+            this.button10.TabIndex = 58;
             this.button10.Text = "PICK";
             this.button10.UseVisualStyleBackColor = true;
             this.button10.Click += new System.EventHandler(this.button10_Click);
@@ -519,43 +524,54 @@ namespace IridiumDialAuxiPaste
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // aboutToolStripMenuItem
+            // pasterToolStripMenuItem
             // 
-            this.aboutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aboutToolStripMenuItem1,
-            this.aboutToolStripMenuItem2});
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(58, 24);
-            this.aboutToolStripMenuItem.Text = "Help";
+            this.pasterToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.abstractToolStripMenuItem,
+            this.keepOnTopToolStripMenuItem,
+            this.quitToolStripMenuItem});
+            this.pasterToolStripMenuItem.Name = "pasterToolStripMenuItem";
+            this.pasterToolStripMenuItem.Size = new System.Drawing.Size(68, 24);
+            this.pasterToolStripMenuItem.Text = "Paster";
             // 
-            // label21
+            // abstractToolStripMenuItem
             // 
-            this.label21.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label21.Location = new System.Drawing.Point(8, 395);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(147, 27);
-            this.label21.TabIndex = 0;
-            this.label21.Text = "Timer";
-            this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.abstractToolStripMenuItem.Image = global::IridiumDialAuxiPaste.Properties.Resources.Wizard;
+            this.abstractToolStripMenuItem.Name = "abstractToolStripMenuItem";
+            this.abstractToolStripMenuItem.Size = new System.Drawing.Size(183, 26);
+            this.abstractToolStripMenuItem.Text = "Abstract";
+            this.abstractToolStripMenuItem.Click += new System.EventHandler(this.abstractToolStripMenuItem_Click);
             // 
-            // textBox11
+            // keepOnTopToolStripMenuItem
             // 
-            this.textBox11.Location = new System.Drawing.Point(207, 395);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.ReadOnly = true;
-            this.textBox11.Size = new System.Drawing.Size(49, 31);
-            this.textBox11.TabIndex = 1;
-            this.textBox11.Text = "s";
+            this.keepOnTopToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.alwaysToolStripMenuItem,
+            this.whileTimingToolStripMenuItem});
+            this.keepOnTopToolStripMenuItem.Name = "keepOnTopToolStripMenuItem";
+            this.keepOnTopToolStripMenuItem.Size = new System.Drawing.Size(183, 26);
+            this.keepOnTopToolStripMenuItem.Text = "Keep on top";
             // 
-            // button11
+            // alwaysToolStripMenuItem
             // 
-            this.button11.Location = new System.Drawing.Point(280, 395);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(75, 27);
-            this.button11.TabIndex = 2;
-            this.button11.Text = "SET";
-            this.button11.UseVisualStyleBackColor = true;
-            this.button11.Click += new System.EventHandler(this.button10_Click);
+            this.alwaysToolStripMenuItem.Name = "alwaysToolStripMenuItem";
+            this.alwaysToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.alwaysToolStripMenuItem.Text = "Always";
+            this.alwaysToolStripMenuItem.Click += new System.EventHandler(this.alwaysToolStripMenuItem_Click);
+            // 
+            // whileTimingToolStripMenuItem
+            // 
+            this.whileTimingToolStripMenuItem.Name = "whileTimingToolStripMenuItem";
+            this.whileTimingToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.whileTimingToolStripMenuItem.Text = "While timing";
+            this.whileTimingToolStripMenuItem.Click += new System.EventHandler(this.whileTimingToolStripMenuItem_Click);
+            // 
+            // quitToolStripMenuItem
+            // 
+            this.quitToolStripMenuItem.Image = global::IridiumDialAuxiPaste.Properties.Resources.Close;
+            this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
+            this.quitToolStripMenuItem.Size = new System.Drawing.Size(183, 26);
+            this.quitToolStripMenuItem.Text = "Quit";
+            this.quitToolStripMenuItem.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
@@ -573,14 +589,121 @@ namespace IridiumDialAuxiPaste
             this.iridiumNumToolStripMenuItem.Size = new System.Drawing.Size(182, 26);
             this.iridiumNumToolStripMenuItem.Text = "Iridium Num";
             // 
+            // optionsToolStripMenuItem
+            // 
+            this.optionsToolStripMenuItem.Image = global::IridiumDialAuxiPaste.Properties.Resources.Settings;
+            this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(182, 26);
+            this.optionsToolStripMenuItem.Text = "Settings…";
+            // 
+            // optionsToolStripMenuItem1
+            // 
+            this.optionsToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.checkProgToolStripMenuItem,
+            this.autoClearToolStripMenuItem,
+            this.autoLockToolStripMenuItem,
+            this.autoDialToolStripMenuItem});
+            this.optionsToolStripMenuItem1.Name = "optionsToolStripMenuItem1";
+            this.optionsToolStripMenuItem1.Size = new System.Drawing.Size(81, 24);
+            this.optionsToolStripMenuItem1.Text = "Options";
+            // 
+            // checkProgToolStripMenuItem
+            // 
+            this.checkProgToolStripMenuItem.Name = "checkProgToolStripMenuItem";
+            this.checkProgToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.checkProgToolStripMenuItem.Text = "Check Prog";
+            this.checkProgToolStripMenuItem.Click += new System.EventHandler(this.cheakProgToolStripMenuItem_Click);
+            // 
+            // autoClearToolStripMenuItem
+            // 
+            this.autoClearToolStripMenuItem.Checked = true;
+            this.autoClearToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.autoClearToolStripMenuItem.Name = "autoClearToolStripMenuItem";
+            this.autoClearToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.autoClearToolStripMenuItem.Text = "Auto Clear";
+            this.autoClearToolStripMenuItem.Click += new System.EventHandler(this.autoClearToolStripMenuItem_Click);
+            // 
+            // autoLockToolStripMenuItem
+            // 
+            this.autoLockToolStripMenuItem.Name = "autoLockToolStripMenuItem";
+            this.autoLockToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.autoLockToolStripMenuItem.Text = "Auto Lock";
+            this.autoLockToolStripMenuItem.Click += new System.EventHandler(this.autoLockToolStripMenuItem_Click);
+            // 
+            // autoDialToolStripMenuItem
+            // 
+            this.autoDialToolStripMenuItem.Name = "autoDialToolStripMenuItem";
+            this.autoDialToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.autoDialToolStripMenuItem.Text = "Auto Dial";
+            this.autoDialToolStripMenuItem.Click += new System.EventHandler(this.autoDialToolStripMenuItem_Click);
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutToolStripMenuItem1,
+            this.aboutToolStripMenuItem2});
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(58, 24);
+            this.aboutToolStripMenuItem.Text = "Help";
+            // 
+            // aboutToolStripMenuItem1
+            // 
+            this.aboutToolStripMenuItem1.Image = global::IridiumDialAuxiPaste.Properties.Resources.StatusHelpOutline;
+            this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
+            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.aboutToolStripMenuItem1.Text = "How to use?";
+            this.aboutToolStripMenuItem1.Click += new System.EventHandler(this.aboutToolStripMenuItem1_Click);
+            // 
+            // aboutToolStripMenuItem2
+            // 
+            this.aboutToolStripMenuItem2.Name = "aboutToolStripMenuItem2";
+            this.aboutToolStripMenuItem2.Size = new System.Drawing.Size(224, 26);
+            this.aboutToolStripMenuItem2.Text = "About";
+            // 
+            // label21
+            // 
+            this.label21.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label21.Location = new System.Drawing.Point(8, 395);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(147, 27);
+            this.label21.TabIndex = 0;
+            this.label21.Text = "Timer";
+            this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // textBox11
+            // 
+            this.textBox11.Location = new System.Drawing.Point(207, 395);
+            this.textBox11.Name = "textBox11";
+            this.textBox11.ReadOnly = true;
+            this.textBox11.Size = new System.Drawing.Size(49, 31);
+            this.textBox11.TabIndex = 99;
+            this.textBox11.TabStop = false;
+            this.textBox11.Text = "s";
+            // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(280, 395);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(75, 27);
+            this.button11.TabIndex = 11;
+            this.button11.Text = "SET";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button10_Click);
+            // 
             // statusStrip1
             // 
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
-            this.toolStripProgressBar1});
+            this.toolStripProgressBar,
+            this.toolStripButtonAD,
+            this.toolStripButtonAL,
+            this.toolStripButtonAC,
+            this.toolStripButtonCP});
+            this.statusStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.statusStrip1.Location = new System.Drawing.Point(0, 432);
             this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.ShowItemToolTips = true;
             this.statusStrip1.Size = new System.Drawing.Size(378, 26);
             this.statusStrip1.TabIndex = 4;
             this.statusStrip1.Text = "statusStrip1";
@@ -588,13 +711,58 @@ namespace IridiumDialAuxiPaste
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(167, 20);
-            this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(54, 20);
+            this.toolStripStatusLabel1.Text = "Ready";
             // 
-            // toolStripProgressBar1
+            // toolStripProgressBar
             // 
-            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
-            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 18);
+            this.toolStripProgressBar.Name = "toolStripProgressBar";
+            this.toolStripProgressBar.Size = new System.Drawing.Size(100, 18);
+            this.toolStripProgressBar.Visible = false;
+            // 
+            // toolStripButtonAD
+            // 
+            this.toolStripButtonAD.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripButtonAD.CheckOnClick = true;
+            this.toolStripButtonAD.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButtonAD.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonAD.Name = "toolStripButtonAD";
+            this.toolStripButtonAD.Size = new System.Drawing.Size(35, 24);
+            this.toolStripButtonAD.Text = "AD";
+            this.toolStripButtonAD.ToolTipText = "Auto Dial (OFF)";
+            // 
+            // toolStripButtonAL
+            // 
+            this.toolStripButtonAL.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripButtonAL.CheckOnClick = true;
+            this.toolStripButtonAL.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButtonAL.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonAL.Name = "toolStripButtonAL";
+            this.toolStripButtonAL.Size = new System.Drawing.Size(32, 24);
+            this.toolStripButtonAL.Text = "AL";
+            this.toolStripButtonAL.ToolTipText = "Auto Lock (OFF)";
+            // 
+            // toolStripButtonAC
+            // 
+            this.toolStripButtonAC.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripButtonAC.CheckOnClick = true;
+            this.toolStripButtonAC.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButtonAC.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonAC.Name = "toolStripButtonAC";
+            this.toolStripButtonAC.Size = new System.Drawing.Size(34, 24);
+            this.toolStripButtonAC.Text = "AC";
+            this.toolStripButtonAC.ToolTipText = "Auto Clear (ON)";
+            // 
+            // toolStripButtonCP
+            // 
+            this.toolStripButtonCP.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripButtonCP.CheckOnClick = true;
+            this.toolStripButtonCP.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButtonCP.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonCP.Name = "toolStripButtonCP";
+            this.toolStripButtonCP.Size = new System.Drawing.Size(32, 24);
+            this.toolStripButtonCP.Text = "CP";
+            this.toolStripButtonCP.ToolTipText = "Check Prog";
             // 
             // secUpDown
             // 
@@ -619,108 +787,12 @@ namespace IridiumDialAuxiPaste
             this.secUpDown.MinimumSize = new System.Drawing.Size(49, 0);
             this.secUpDown.Name = "secUpDown";
             this.secUpDown.Size = new System.Drawing.Size(49, 31);
-            this.secUpDown.TabIndex = 5;
+            this.secUpDown.TabIndex = 10;
             this.secUpDown.Value = new decimal(new int[] {
             2,
             0,
             0,
             0});
-            // 
-            // aboutToolStripMenuItem2
-            // 
-            this.aboutToolStripMenuItem2.Name = "aboutToolStripMenuItem2";
-            this.aboutToolStripMenuItem2.Size = new System.Drawing.Size(182, 26);
-            this.aboutToolStripMenuItem2.Text = "About";
-            // 
-            // pasterToolStripMenuItem
-            // 
-            this.pasterToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.abstractToolStripMenuItem,
-            this.keepOnTopToolStripMenuItem,
-            this.quitToolStripMenuItem});
-            this.pasterToolStripMenuItem.Name = "pasterToolStripMenuItem";
-            this.pasterToolStripMenuItem.Size = new System.Drawing.Size(68, 24);
-            this.pasterToolStripMenuItem.Text = "Paster";
-            // 
-            // keepOnTopToolStripMenuItem
-            // 
-            this.keepOnTopToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.alwaysToolStripMenuItem,
-            this.whileTimingToolStripMenuItem});
-            this.keepOnTopToolStripMenuItem.Name = "keepOnTopToolStripMenuItem";
-            this.keepOnTopToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.keepOnTopToolStripMenuItem.Text = "Keep on top";
-            // 
-            // optionsToolStripMenuItem1
-            // 
-            this.optionsToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cheakProgToolStripMenuItem,
-            this.autoClearToolStripMenuItem,
-            this.autoLockToolStripMenuItem});
-            this.optionsToolStripMenuItem1.Name = "optionsToolStripMenuItem1";
-            this.optionsToolStripMenuItem1.Size = new System.Drawing.Size(81, 24);
-            this.optionsToolStripMenuItem1.Text = "Options";
-            // 
-            // alwaysToolStripMenuItem
-            // 
-            this.alwaysToolStripMenuItem.Name = "alwaysToolStripMenuItem";
-            this.alwaysToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
-            this.alwaysToolStripMenuItem.Text = "Always";
-            // 
-            // whileTimingToolStripMenuItem
-            // 
-            this.whileTimingToolStripMenuItem.Name = "whileTimingToolStripMenuItem";
-            this.whileTimingToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
-            this.whileTimingToolStripMenuItem.Text = "While timing";
-            // 
-            // abstractToolStripMenuItem
-            // 
-            this.abstractToolStripMenuItem.Image = global::IridiumDialAuxiPaste.Properties.Resources.Wizard;
-            this.abstractToolStripMenuItem.Name = "abstractToolStripMenuItem";
-            this.abstractToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.abstractToolStripMenuItem.Text = "Abstract";
-            // 
-            // quitToolStripMenuItem
-            // 
-            this.quitToolStripMenuItem.Image = global::IridiumDialAuxiPaste.Properties.Resources.Close;
-            this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
-            this.quitToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.quitToolStripMenuItem.Text = "Quit";
-            this.quitToolStripMenuItem.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
-            // 
-            // optionsToolStripMenuItem
-            // 
-            this.optionsToolStripMenuItem.Image = global::IridiumDialAuxiPaste.Properties.Resources.Settings;
-            this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(182, 26);
-            this.optionsToolStripMenuItem.Text = "Settings…";
-            // 
-            // aboutToolStripMenuItem1
-            // 
-            this.aboutToolStripMenuItem1.Image = global::IridiumDialAuxiPaste.Properties.Resources.StatusHelpOutline;
-            this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
-            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(182, 26);
-            this.aboutToolStripMenuItem1.Text = "How to use?";
-            // 
-            // cheakProgToolStripMenuItem
-            // 
-            this.cheakProgToolStripMenuItem.Name = "cheakProgToolStripMenuItem";
-            this.cheakProgToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.cheakProgToolStripMenuItem.Text = "Cheak Prog";
-            // 
-            // autoClearToolStripMenuItem
-            // 
-            this.autoClearToolStripMenuItem.Checked = true;
-            this.autoClearToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.autoClearToolStripMenuItem.Name = "autoClearToolStripMenuItem";
-            this.autoClearToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.autoClearToolStripMenuItem.Text = "Auto Clear";
-            // 
-            // autoLockToolStripMenuItem
-            // 
-            this.autoLockToolStripMenuItem.Name = "autoLockToolStripMenuItem";
-            this.autoLockToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.autoLockToolStripMenuItem.Text = "Auto Lock";
             // 
             // MainForm
             // 
@@ -843,7 +915,7 @@ namespace IridiumDialAuxiPaste
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-        private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
+        private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar;
         private System.Windows.Forms.NumericUpDown secUpDown;
         private System.Windows.Forms.ToolStripMenuItem pasterToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem keepOnTopToolStripMenuItem;
@@ -853,9 +925,14 @@ namespace IridiumDialAuxiPaste
         private System.Windows.Forms.ToolStripMenuItem alwaysToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem whileTimingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem abstractToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem cheakProgToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem checkProgToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem autoClearToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem autoLockToolStripMenuItem;
+        private System.Windows.Forms.ToolStripButton toolStripButtonCP;
+        private System.Windows.Forms.ToolStripMenuItem autoDialToolStripMenuItem;
+        private System.Windows.Forms.ToolStripButton toolStripButtonAD;
+        private System.Windows.Forms.ToolStripButton toolStripButtonAL;
+        private System.Windows.Forms.ToolStripButton toolStripButtonAC;
     }
 }
 
