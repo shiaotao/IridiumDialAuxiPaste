@@ -73,6 +73,26 @@ namespace IridiumDialAuxiPaste.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap KeepFrontLocked {
+            get {
+                object obj = ResourceManager.GetObject("KeepFrontLocked", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap KeepFrontTiming {
+            get {
+                object obj = ResourceManager.GetObject("KeepFrontTiming", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap PumpingElephant {
             get {
                 object obj = ResourceManager.GetObject("PumpingElephant", resourceCulture);

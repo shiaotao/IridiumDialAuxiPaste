@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 16 16"
+   version="1.1"
+   id="svg5"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1">
+    <style
+       id="style1">.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title
+     id="title1">IconLightVersion</title>
+  <g
+     id="canvas">
+    <path
+       class="canvas"
+       d="M16,16H0V0H16Z"
+       id="path1" />
+  </g>
+  <g
+     id="level-1">
+    <g
+       class="cls-1"
+       id="g3">
+      <path
+         class="light-defaultgrey-10"
+         d="M15.5,1.5v9H14V5.086L12.914,4H4.5V1.5Z"
+         id="path2" />
+      <path
+         class="light-defaultgrey"
+         d="M15.5,1H4.5L4,1.5V4H15v6H14v1h1.5l.5-.5v-9ZM15,3H5V2H15Z"
+         id="path3" />
+    </g>
+    <g
+       class="cls-1"
+       id="g3-1"
+       style="opacity:0.75"
+       transform="matrix(0.85714286,0,0,0.83333333,0.14285714,3.3333334)">
+      <path
+         class="light-purple-10"
+         d="m 14.5,5.5 v 8 h -13 v -8 z"
+         id="path2-1"
+         style="opacity:0.1;fill:#6936aa" />
+      <path
+         class="light-purple"
+         d="M 14.5,5 H 1.5 L 1,5.5 v 8 L 1.5,14 h 13 L 15,13.5 v -8 z M 14,13 H 2 V 6 h 12 z"
+         id="path3-5"
+         style="opacity:1;fill:#6936aa" />
+    </g>
+    <g
+       class="cls-1"
+       id="g4"
+       style="opacity:0.75"
+       transform="matrix(0.85714286,0,0,0.83333333,0.14285714,3.3333334)">
+      <path
+         class="light-purple"
+         d="m 14.5,2.5 v 3 h -13 v -3 z"
+         id="path4"
+         style="opacity:1;fill:#6936aa" />
+    </g>
+    <path
+       class="light-purple"
+       d="M 12.571429,5 H 1.4285714 L 1,5.4166666 v 2.5 L 1.4285714,8.3333333 H 12.571429 L 13,7.9166666 v -2.5 z M 12.142857,7.5 H 1.8571429 V 5.8333334 H 12.142857 Z"
+       id="path5-2"
+       style="fill:#6936aa;stroke-width:0.845154" />
+  </g>
+</svg>

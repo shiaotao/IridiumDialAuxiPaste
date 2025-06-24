@@ -74,7 +74,7 @@ namespace IridiumDialAuxiPaste
             this.pasterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.abstractToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.keepOnTopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.alwaysToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.alwaysTopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.whileTimingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -94,11 +94,17 @@ namespace IridiumDialAuxiPaste
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
+            this.toolStripSeparator0 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonAD = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonAL = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonAC = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonCP = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.secUpDown = new System.Windows.Forms.NumericUpDown();
+            this.resetConfToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.secUpDown)).BeginInit();
@@ -529,6 +535,7 @@ namespace IridiumDialAuxiPaste
             this.pasterToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.abstractToolStripMenuItem,
             this.keepOnTopToolStripMenuItem,
+            this.resetConfToolStripMenuItem,
             this.quitToolStripMenuItem});
             this.pasterToolStripMenuItem.Name = "pasterToolStripMenuItem";
             this.pasterToolStripMenuItem.Size = new System.Drawing.Size(68, 24);
@@ -538,38 +545,41 @@ namespace IridiumDialAuxiPaste
             // 
             this.abstractToolStripMenuItem.Image = global::IridiumDialAuxiPaste.Properties.Resources.Wizard;
             this.abstractToolStripMenuItem.Name = "abstractToolStripMenuItem";
-            this.abstractToolStripMenuItem.Size = new System.Drawing.Size(183, 26);
+            this.abstractToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.abstractToolStripMenuItem.Text = "Abstract";
             this.abstractToolStripMenuItem.Click += new System.EventHandler(this.abstractToolStripMenuItem_Click);
             // 
             // keepOnTopToolStripMenuItem
             // 
             this.keepOnTopToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.alwaysToolStripMenuItem,
+            this.alwaysTopToolStripMenuItem,
             this.whileTimingToolStripMenuItem});
+            this.keepOnTopToolStripMenuItem.Image = global::IridiumDialAuxiPaste.Properties.Resources.KeepFrontTiming;
             this.keepOnTopToolStripMenuItem.Name = "keepOnTopToolStripMenuItem";
-            this.keepOnTopToolStripMenuItem.Size = new System.Drawing.Size(183, 26);
-            this.keepOnTopToolStripMenuItem.Text = "Keep on top";
+            this.keepOnTopToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.keepOnTopToolStripMenuItem.Text = "Keep on Top";
             // 
-            // alwaysToolStripMenuItem
+            // alwaysTopToolStripMenuItem
             // 
-            this.alwaysToolStripMenuItem.Name = "alwaysToolStripMenuItem";
-            this.alwaysToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
-            this.alwaysToolStripMenuItem.Text = "Always";
-            this.alwaysToolStripMenuItem.Click += new System.EventHandler(this.alwaysToolStripMenuItem_Click);
+            this.alwaysTopToolStripMenuItem.Name = "alwaysTopToolStripMenuItem";
+            this.alwaysTopToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.alwaysTopToolStripMenuItem.Text = "Always";
+            this.alwaysTopToolStripMenuItem.Click += new System.EventHandler(this.alwaysToolStripMenuItem_Click);
             // 
             // whileTimingToolStripMenuItem
             // 
+            this.whileTimingToolStripMenuItem.Checked = true;
+            this.whileTimingToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.whileTimingToolStripMenuItem.Name = "whileTimingToolStripMenuItem";
-            this.whileTimingToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
-            this.whileTimingToolStripMenuItem.Text = "While timing";
+            this.whileTimingToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.whileTimingToolStripMenuItem.Text = "While Timing";
             this.whileTimingToolStripMenuItem.Click += new System.EventHandler(this.whileTimingToolStripMenuItem_Click);
             // 
             // quitToolStripMenuItem
             // 
             this.quitToolStripMenuItem.Image = global::IridiumDialAuxiPaste.Properties.Resources.Close;
             this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
-            this.quitToolStripMenuItem.Size = new System.Drawing.Size(183, 26);
+            this.quitToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.quitToolStripMenuItem.Text = "Quit";
             this.quitToolStripMenuItem.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
             // 
@@ -586,14 +596,14 @@ namespace IridiumDialAuxiPaste
             // iridiumNumToolStripMenuItem
             // 
             this.iridiumNumToolStripMenuItem.Name = "iridiumNumToolStripMenuItem";
-            this.iridiumNumToolStripMenuItem.Size = new System.Drawing.Size(182, 26);
+            this.iridiumNumToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.iridiumNumToolStripMenuItem.Text = "Iridium Num";
             // 
             // optionsToolStripMenuItem
             // 
             this.optionsToolStripMenuItem.Image = global::IridiumDialAuxiPaste.Properties.Resources.Settings;
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(182, 26);
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.optionsToolStripMenuItem.Text = "Settings…";
             // 
             // optionsToolStripMenuItem1
@@ -609,10 +619,12 @@ namespace IridiumDialAuxiPaste
             // 
             // checkProgToolStripMenuItem
             // 
+            this.checkProgToolStripMenuItem.Checked = true;
+            this.checkProgToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkProgToolStripMenuItem.Name = "checkProgToolStripMenuItem";
             this.checkProgToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.checkProgToolStripMenuItem.Text = "Check Prog";
-            this.checkProgToolStripMenuItem.Click += new System.EventHandler(this.cheakProgToolStripMenuItem_Click);
+            this.checkProgToolStripMenuItem.Click += new System.EventHandler(this.checkProgToolStripMenuItem_Click);
             // 
             // autoClearToolStripMenuItem
             // 
@@ -682,6 +694,7 @@ namespace IridiumDialAuxiPaste
             // 
             // button11
             // 
+            this.button11.Enabled = false;
             this.button11.Location = new System.Drawing.Point(280, 395);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(75, 27);
@@ -696,10 +709,15 @@ namespace IridiumDialAuxiPaste
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
             this.toolStripProgressBar,
+            this.toolStripSeparator0,
             this.toolStripButtonAD,
+            this.toolStripSeparator1,
             this.toolStripButtonAL,
+            this.toolStripSeparator2,
             this.toolStripButtonAC,
-            this.toolStripButtonCP});
+            this.toolStripSeparator3,
+            this.toolStripButtonCP,
+            this.toolStripSeparator4});
             this.statusStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.statusStrip1.Location = new System.Drawing.Point(0, 432);
             this.statusStrip1.Name = "statusStrip1";
@@ -720,6 +738,12 @@ namespace IridiumDialAuxiPaste
             this.toolStripProgressBar.Size = new System.Drawing.Size(100, 18);
             this.toolStripProgressBar.Visible = false;
             // 
+            // toolStripSeparator0
+            // 
+            this.toolStripSeparator0.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripSeparator0.Name = "toolStripSeparator0";
+            this.toolStripSeparator0.Size = new System.Drawing.Size(6, 26);
+            // 
             // toolStripButtonAD
             // 
             this.toolStripButtonAD.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
@@ -730,6 +754,13 @@ namespace IridiumDialAuxiPaste
             this.toolStripButtonAD.Size = new System.Drawing.Size(35, 24);
             this.toolStripButtonAD.Text = "AD";
             this.toolStripButtonAD.ToolTipText = "Auto Dial (OFF)";
+            this.toolStripButtonAD.Click += new System.EventHandler(this.toolStripButtonAD_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 26);
             // 
             // toolStripButtonAL
             // 
@@ -741,6 +772,13 @@ namespace IridiumDialAuxiPaste
             this.toolStripButtonAL.Size = new System.Drawing.Size(32, 24);
             this.toolStripButtonAL.Text = "AL";
             this.toolStripButtonAL.ToolTipText = "Auto Lock (OFF)";
+            this.toolStripButtonAL.Click += new System.EventHandler(this.toolStripButtonAL_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 26);
             // 
             // toolStripButtonAC
             // 
@@ -752,6 +790,13 @@ namespace IridiumDialAuxiPaste
             this.toolStripButtonAC.Size = new System.Drawing.Size(34, 24);
             this.toolStripButtonAC.Text = "AC";
             this.toolStripButtonAC.ToolTipText = "Auto Clear (ON)";
+            this.toolStripButtonAC.Click += new System.EventHandler(this.toolStripButtonAC_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 26);
             // 
             // toolStripButtonCP
             // 
@@ -762,7 +807,14 @@ namespace IridiumDialAuxiPaste
             this.toolStripButtonCP.Name = "toolStripButtonCP";
             this.toolStripButtonCP.Size = new System.Drawing.Size(32, 24);
             this.toolStripButtonCP.Text = "CP";
-            this.toolStripButtonCP.ToolTipText = "Check Prog";
+            this.toolStripButtonCP.ToolTipText = "Check Prog. (ON)";
+            this.toolStripButtonCP.Click += new System.EventHandler(this.toolStripButtonCP_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 26);
             // 
             // secUpDown
             // 
@@ -793,6 +845,12 @@ namespace IridiumDialAuxiPaste
             0,
             0,
             0});
+            // 
+            // resetConfToolStripMenuItem
+            // 
+            this.resetConfToolStripMenuItem.Name = "resetConfToolStripMenuItem";
+            this.resetConfToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.resetConfToolStripMenuItem.Text = "Reset Conf";
             // 
             // MainForm
             // 
@@ -922,17 +980,23 @@ namespace IridiumDialAuxiPaste
         private System.Windows.Forms.ToolStripMenuItem quitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem alwaysToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem alwaysTopToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem whileTimingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem abstractToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem checkProgToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem autoClearToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem autoLockToolStripMenuItem;
-        private System.Windows.Forms.ToolStripButton toolStripButtonCP;
         private System.Windows.Forms.ToolStripMenuItem autoDialToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton toolStripButtonCP;
         private System.Windows.Forms.ToolStripButton toolStripButtonAD;
         private System.Windows.Forms.ToolStripButton toolStripButtonAL;
         private System.Windows.Forms.ToolStripButton toolStripButtonAC;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator0;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripMenuItem resetConfToolStripMenuItem;
     }
 }
 

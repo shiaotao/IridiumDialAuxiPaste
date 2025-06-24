@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -21,12 +22,39 @@ namespace IridiumDialAuxiPaste
         private static extern IntPtr GetForegroundWindow();
 
         [DllImport("user32.dll")]
-        private static extern int GetWindowText(IntPtr hWnd, StringBuilder text, int count);
+        private static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int X, int Y, int cx, int cy, uint uFlags);
 
         [DllImport("user32.dll")]
-        private static extern uint GetWindowThreadProcessId(IntPtr hWnd, out uint lpdwProcessId);
+        private static extern uint GetWindowThreadProcessId(IntPtr hWnd, out uint processId);
+        private const string _enabledProcessName = "GliderDCU";
 
-        // 按键常量定义
+        [DllImport("user32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        private static extern bool FlashWindowEx(ref FLASHWINFO pwfi);
+
+        // 必要的结构体
+        [StructLayout(LayoutKind.Sequential)]
+        private struct FLASHWINFO
+        {
+            public uint cbSize;
+            public IntPtr hwnd;
+            public uint dwFlags;
+            public uint uCount;
+            public uint dwTimeout;
+        }
+
+        private const uint FLASHW_ALL = 3;        // 闪烁窗口标题和任务栏按钮
+        private const uint FLASHW_TIMERNOFG = 12; // 窗口在后台时闪烁，前台时停止
+
+        private static readonly IntPtr HWND_TOPMOST = new IntPtr(-1);   // 置于最顶层
+        private static readonly IntPtr HWND_NOTOPMOST = new IntPtr(-2); // 取消置顶
+        private static readonly IntPtr HWND_BOTTOM = new IntPtr(1);     // 置于最底层
+
+        private const uint SWP_NOSIZE = 0x0001;     // 保持大小
+        private const uint SWP_NOMOVE = 0x0002;     // 保持位置
+        private const uint SWP_NOACTIVATE = 0x0010; // 不激活
+
+        // 键码常量定义
         const byte VK_CONTROL = 0x11;
         const byte VK_SHIFT = 0x10;
         const byte VK_TAB = 0x09;
@@ -47,13 +75,9 @@ namespace IridiumDialAuxiPaste
         {
             InitializeComponent();
 
-            // 初始化剪贴板
-            InitializeClipboard();
+            InitializeComponentCustom();
 
-            checkProgToolStripMenuItem.CheckedChanged += CheckProgStatus_CheckedChanged;
-            autoClearToolStripMenuItem.CheckedChanged += AutoClearStatus_CheckedChanged;
-            autoLockToolStripMenuItem.CheckedChanged += AutoLockStatus_CheckedChanged;
-            autoDialToolStripMenuItem.CheckedChanged += AutoDialStatus_CheckedChanged;
+            InitializeClipboard();
 
             // 设置关键操作定时器"pasteTimer"
             pasteTimer = new System.Windows.Forms.Timer();
@@ -69,6 +93,8 @@ namespace IridiumDialAuxiPaste
 
         private void Pick2CopyText(TextBox textBox_)
         {
+            textBox1.Text = DateTime.Now.Ticks.ToString();
+
             // 检查TextBox_中是否有内容，将内容复制到剪贴板
             if (!string.IsNullOrEmpty(textBox_.Text))
             {
@@ -77,6 +103,12 @@ namespace IridiumDialAuxiPaste
 
                 Clipboard.SetText(textBox_.Text);
 
+                if (whileTimingToolStripMenuItem.Checked)
+                {
+                    // 设置窗口的置顶属性
+                    SetWindowPos(this.Handle, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE);
+                }
+
                 float intervalSeconds = (float)secUpDown.Value;
 
                 // 设置定时器间隔并启动
@@ -84,6 +116,7 @@ namespace IridiumDialAuxiPaste
                 pasteTimer.Start();
                 pasteTimerStartStamp = DateTime.Now;
 
+                // 配置并载入倒计时进度条
                 totalMilliseconds = pasteTimer.Interval;
                 toolStripProgressBar.Maximum = totalMilliseconds;
                 toolStripProgressBar.Visible = true;
@@ -100,12 +133,34 @@ namespace IridiumDialAuxiPaste
 
         private void PasteTimer_Tick(object sender, EventArgs e)
         {
-            // This method is subscribed by pasteTimer.Tick
+            // This method is subscribed by pasteTimer.Tick.
             pasteTimer.Stop();
 
-            SendKeysPress();
+            if (checkProgToolStripMenuItem.Checked && GetFocusedProgramName() != _enabledProcessName)
+            {
+                toolStripStatusLabel1.Text = toolStripStatusLabel1.Text.Substring(0, 8) + "Operation Interrupted";
 
-            toolStripStatusLabel1.Text = toolStripStatusLabel1.Text.Substring(0, 8) + "Pasted";
+                FlashTaskbar();
+
+                AbstractMessageBox.Show(this, "不建议的光标位置!\n\n刚才那里不是甲板软件吧，还好没顺手乱改一通……", "Info", MessageBoxIcon.Error);
+            }
+            else
+            {
+                SendKeysPress();
+
+                toolStripStatusLabel1.Text = toolStripStatusLabel1.Text.Substring(0, 8) + "Pasted";
+            }
+
+            if (!alwaysTopToolStripMenuItem.Checked)
+            {
+                // 取消置顶并置于底层
+                SetWindowPos(this.Handle, HWND_NOTOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE);
+                if (!this.ContainsFocus)
+                {
+                    // 额外调用将窗口送到底层
+                    SetWindowPos(this.Handle, HWND_BOTTOM, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_NOACTIVATE);
+                }
+            }
         }
 
         private void ProgressBarTimer_Tick(object sender, EventArgs e)
@@ -128,6 +183,9 @@ namespace IridiumDialAuxiPaste
             toolStripProgressBar.Value = Math.Min(elapsedMilliseconds, totalMilliseconds);
         }
 
+        /// <summary>
+        /// 发送键码模拟按键操作函数
+        /// </summary>
         private void SendKeysPress()
         {
             // 按下Ctrl
@@ -168,10 +226,39 @@ namespace IridiumDialAuxiPaste
 
             if (autoDialToolStripMenuItem.Checked)
             {
-                ;
+                // 按下Shift键
+                keybd_event(VK_SHIFT, 0, 0, UIntPtr.Zero);
+                // 按下并释放Tab键
+                keybd_event(VK_TAB, 0, 0, UIntPtr.Zero);
+                keybd_event(VK_TAB, 0, KEYEVENTF_KEYUP, UIntPtr.Zero);
+                // 释放Shift键
+                keybd_event(VK_SHIFT, 0, KEYEVENTF_KEYUP, UIntPtr.Zero);
+                // 按下并释放空格键
+                keybd_event(VK_SPACE, 0, 0, UIntPtr.Zero);
+                keybd_event(VK_SPACE, 0, KEYEVENTF_KEYUP, UIntPtr.Zero);
             }
         }
 
+        /// <summary>
+        /// 窗体控件自定义初始化。
+        /// </summary>
+        private void InitializeComponentCustom()
+        {
+            this.toolStripButtonCP.Checked = checkProgToolStripMenuItem.Checked;
+            this.toolStripButtonAC.Checked = autoClearToolStripMenuItem.Checked;
+
+            checkProgToolStripMenuItem.CheckedChanged += CheckProgStatus_CheckedChanged;
+            autoClearToolStripMenuItem.CheckedChanged += AutoClearStatus_CheckedChanged;
+            autoLockToolStripMenuItem.CheckedChanged += AutoLockStatus_CheckedChanged;
+            autoDialToolStripMenuItem.CheckedChanged += AutoDialStatus_CheckedChanged;
+
+            alwaysTopToolStripMenuItem.CheckedChanged += PermKeepFront_CheckedChanged;
+            whileTimingToolStripMenuItem.CheckedChanged += InpermKeepFront_CheckedChanged;
+        }
+
+        /// <summary>
+        /// 系统剪贴板初始化函数
+        /// </summary>
         private void InitializeClipboard()
         {
             try
@@ -180,8 +267,8 @@ namespace IridiumDialAuxiPaste
                 bool hasText = Clipboard.ContainsText();
                 bool hasImage = Clipboard.ContainsImage();
                 bool hasData = Clipboard.ContainsData(DataFormats.CommaSeparatedValue) ||
-                                Clipboard.ContainsData(DataFormats.Html) ||
-                                Clipboard.ContainsData(DataFormats.Rtf);
+                               Clipboard.ContainsData(DataFormats.Html) ||
+                               Clipboard.ContainsData(DataFormats.Rtf);
 
                 // 如果剪贴板为空，才进行初始化
                 if (!hasText && !hasImage && !hasData)
@@ -201,6 +288,48 @@ namespace IridiumDialAuxiPaste
                 // 剪贴板可能暂时不可用，稍后再试
                 System.Threading.Thread.Sleep(99);
             }
+        }
+
+        /// <summary>
+        /// 返回焦点所在进程名称。
+        /// </summary>
+        /// <returns>进程名称</returns>
+        private string GetFocusedProgramName()
+        {
+            try
+            {
+                // 获取前台窗口句柄
+                IntPtr hwnd = GetForegroundWindow();
+
+                // 获取窗口关联的进程ID
+                GetWindowThreadProcessId(hwnd, out uint pid);
+
+                // 获取进程信息
+                Process process = Process.GetProcessById((int)pid);
+
+                // 返回进程名称
+                return process.ProcessName;
+            }
+            catch (Exception ex)
+            {
+                return $"{ex.Message}";
+            }
+        }
+
+        /// <summary>
+        /// 在后台时闪烁，前台时停止。
+        /// </summary>
+        public void FlashTaskbar()
+        {
+            FLASHWINFO fInfo = new FLASHWINFO();
+
+            fInfo.cbSize = Convert.ToUInt32(Marshal.SizeOf(fInfo));
+            fInfo.hwnd = this.Handle;
+            fInfo.dwFlags = FLASHW_ALL | FLASHW_TIMERNOFG;  // 组合标志
+            fInfo.uCount = 0;   // 持续闪烁
+            fInfo.dwTimeout = 0;    // 系统默认闪烁频率
+
+            FlashWindowEx(ref fInfo);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -301,7 +430,7 @@ namespace IridiumDialAuxiPaste
             AbstractMessageBox.Show(this, "请按下[PICK]选择您要拨打的铱星号码，在设定时间内将光标定位到甲板软件的拨号文本框控件内，稍等片刻即能为您准备好新的号码。", "How to use?", MessageBoxIcon.Information);
         }
 
-        private void cheakProgToolStripMenuItem_Click(object sender, EventArgs e)
+        private void checkProgToolStripMenuItem_Click(object sender, EventArgs e)
         {
             checkProgToolStripMenuItem.Checked = !checkProgToolStripMenuItem.Checked;
         }
@@ -319,19 +448,20 @@ namespace IridiumDialAuxiPaste
         private void autoDialToolStripMenuItem_Click(object sender, EventArgs e)
         {
             autoDialToolStripMenuItem.Checked = !autoDialToolStripMenuItem.Checked;
-            //textBox1.Text = DateTime.Now.Ticks.ToString();
         }
 
         private void alwaysToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (alwaysToolStripMenuItem.Checked)
+            if (alwaysTopToolStripMenuItem.Checked)
             {
-                alwaysToolStripMenuItem.Checked = false;
+                alwaysTopToolStripMenuItem.Checked = false;
+                this.keepOnTopToolStripMenuItem.Image = null;
             }
             else
             {
                 whileTimingToolStripMenuItem.Checked = false;
-                alwaysToolStripMenuItem.Checked = true;
+                alwaysTopToolStripMenuItem.Checked = true;
+                this.keepOnTopToolStripMenuItem.Image = Properties.Resources.KeepFrontLocked;
             }
         }
 
@@ -340,36 +470,99 @@ namespace IridiumDialAuxiPaste
             if (whileTimingToolStripMenuItem.Checked)
             {
                 whileTimingToolStripMenuItem.Checked = false;
+                this.keepOnTopToolStripMenuItem.Image = null;
             }
             else
             {
-                alwaysToolStripMenuItem.Checked = false;
+                alwaysTopToolStripMenuItem.Checked = false;
                 whileTimingToolStripMenuItem.Checked = true;
+                this.keepOnTopToolStripMenuItem.Image = Properties.Resources.KeepFrontTiming;
             }
         }
 
         private void CheckProgStatus_CheckedChanged(object sender, EventArgs e)
         {
-            toolStripButtonCP.Checked = checkProgToolStripMenuItem.Checked;
+            // This method is subscribed by checkProgToolStripMenuItem.CheckedChanged.
+            if (toolStripButtonCP.Checked = checkProgToolStripMenuItem.Checked)
+            {
+                toolStripButtonCP.ToolTipText = "Check Prog. (ON)";
+            }
+            else
+            {
+                toolStripButtonCP.ToolTipText = "Check Prog. (OFF)";
+            }
         }
 
         private void AutoClearStatus_CheckedChanged(object sender, EventArgs e)
         {
+            // This method is subscribed by autoClearToolStripMenuItem.CheckedChanged.
             ;
         }
 
         private void AutoLockStatus_CheckedChanged(object sender, EventArgs e)
         {
-            if(toolStripButtonAL.Checked = autoLockToolStripMenuItem.Checked)
+            // This method is subscribed by autoLockToolStripMenuItem.CheckedChanged.
+            if (toolStripButtonAL.Checked = autoLockToolStripMenuItem.Checked)
             {
-                textBox1.Text = DateTime.Now.Ticks.ToString();
+                toolStripButtonAL.ToolTipText = "Auto Lock (ON)";
             }
-
+            else
+            {
+                toolStripButtonAL.ToolTipText = "Auto Lock (OFF)";
+            }
         }
 
         private void AutoDialStatus_CheckedChanged(object sender, EventArgs e)
         {
-            toolStripButtonAD.Checked = autoDialToolStripMenuItem.Checked;
+            // This method is subscribed by autoDialToolStripMenuItem.CheckedChanged.
+            if (toolStripButtonAD.Checked = autoDialToolStripMenuItem.Checked)
+            {
+                toolStripButtonAD.ToolTipText = "Auto Dial (ON)";
+            }
+            else
+            {
+                toolStripButtonAD.ToolTipText = "Auto Dial (OFF)";
+            }
+        }
+
+        private void toolStripButtonCP_Click(object sender, EventArgs e)
+        {
+            checkProgToolStripMenuItem.Checked = toolStripButtonCP.Checked;
+        }
+
+        private void toolStripButtonAC_Click(object sender, EventArgs e)
+        {
+            // Keep auto clear state true.
+            toolStripButtonAC.Checked = true;
+        }
+
+        private void toolStripButtonAL_Click(object sender, EventArgs e)
+        {
+            autoLockToolStripMenuItem.Checked = toolStripButtonAL.Checked;
+        }
+
+        private void toolStripButtonAD_Click(object sender, EventArgs e)
+        {
+            autoDialToolStripMenuItem.Checked = toolStripButtonAD.Checked;
+        }
+
+        private void PermKeepFront_CheckedChanged(object sender, EventArgs e)
+        {
+            if (alwaysTopToolStripMenuItem.Checked)
+            {
+                SetWindowPos(this.Handle, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE);
+            }
+            else
+            {
+                SetWindowPos(this.Handle, HWND_NOTOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE);
+            }
+        }
+        private void InpermKeepFront_CheckedChanged(object sender, EventArgs e)
+        {
+            if (whileTimingToolStripMenuItem.Checked && !pasteTimer.Enabled)
+            {
+                SetWindowPos(this.Handle, HWND_NOTOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE);
+            }
         }
     }
 
