@@ -151,15 +151,17 @@ namespace IridiumDialAuxiPaste
                 toolStripStatusLabel1.Text = toolStripStatusLabel1.Text.Substring(0, 8) + "Pasted";
             }
 
-            if (!alwaysTopToolStripMenuItem.Checked)
+            if (!alwaysTopToolStripMenuItem.Checked && !this.ContainsFocus)
             {
                 // 取消置顶并置于底层
                 SetWindowPos(this.Handle, HWND_NOTOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE);
-                if (!this.ContainsFocus)
-                {
-                    // 额外调用将窗口送到底层
-                    SetWindowPos(this.Handle, HWND_BOTTOM, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_NOACTIVATE);
-                }
+                // 额外调用将窗口送到底层
+                SetWindowPos(this.Handle, HWND_BOTTOM, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_NOACTIVATE);
+            }
+            else if (!alwaysTopToolStripMenuItem.Checked)
+            {
+                // 取消置顶
+                SetWindowPos(this.Handle, HWND_NOTOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE);
             }
         }
 
@@ -349,7 +351,7 @@ namespace IridiumDialAuxiPaste
 
         private void button1_DoubleClick(object sender, EventArgs e)
         {
-            autoDialToolStripMenuItem.Checked = true;
+            textBox3.Text = DateTime.Now.Ticks.ToString();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -490,6 +492,14 @@ namespace IridiumDialAuxiPaste
             else
             {
                 toolStripButtonCP.ToolTipText = "Check Prog. (OFF)";
+
+                if (autoLockToolStripMenuItem.Checked || autoDialToolStripMenuItem.Checked)
+                {
+                    autoLockToolStripMenuItem.Checked = false;
+                    autoDialToolStripMenuItem.Checked = false;
+
+                    AbstractMessageBox.Show(this, "阁下已撤销核对光标处程式(Check Prog.)!\n或冇宜做自动锁闭(Auto Lock)和自动拨码(Auto Dial)而均被撤销。", "Info", MessageBoxIcon.Information);
+                }
             }
         }
 
@@ -562,6 +572,71 @@ namespace IridiumDialAuxiPaste
             if (whileTimingToolStripMenuItem.Checked && !pasteTimer.Enabled)
             {
                 SetWindowPos(this.Handle, HWND_NOTOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE);
+            }
+        }
+
+        private void resetConfToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            alwaysTopToolStripMenuItem.Checked = false;
+            whileTimingToolStripMenuItem.Checked = true;
+            keepOnTopToolStripMenuItem.Image = Properties.Resources.KeepFrontTiming;
+
+            checkProgToolStripMenuItem.Checked = true;
+            autoClearToolStripMenuItem.Checked = true;
+            autoLockToolStripMenuItem.Checked = false;
+            autoDialToolStripMenuItem.Checked = false;
+
+            this.button11.PerformClick();
+            this.secUpDown.Value = 2;
+            this.textBox1.Text = "";
+            toolStripStatusLabel1.Text = "Ready";
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            TextBox[] textBoxes = new TextBox[10]
+            {
+                textBox1, textBox2, textBox3, textBox4, textBox5,
+                textBox6, textBox7, textBox8, textBox9, textBox10
+            };
+            for (int i = 0; i < textBoxes.Length; i++)
+            {
+                textBoxes[i].ReadOnly = true;
+            }
+
+            textBox2.ReadOnly = false;
+            textBox6.ReadOnly = false;
+
+            button11.Enabled = false;
+            toolStripStatusLabel1.Text = "Ready";
+        }
+
+        private void iridiumNumToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            toolStripStatusLabel1.Text = "Loading";
+            DialogResult _messageBoxReturn = MessageBox.Show("阁下正试图变更铱星号码？", "Warn", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (_messageBoxReturn == DialogResult.Yes)
+            {
+                TextBox[] textBoxes = new TextBox[10]
+                {
+                    textBox1, textBox2, textBox3, textBox4, textBox5,
+                    textBox6, textBox7, textBox8, textBox9, textBox10
+                };
+                for (int i = 0; i < textBoxes.Length; i++)
+                {
+                    textBoxes[i].ReadOnly = false;
+                }
+
+                textBox1.ReadOnly = true;
+                textBox3.ReadOnly = true;
+
+                button11.Enabled = true;
+                toolStripStatusLabel1.Text = "Editing Iridium Number";
+            }
+            else
+            {
+                toolStripStatusLabel1.Text = "Ready";
             }
         }
     }
